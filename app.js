@@ -1,4 +1,5 @@
 const express = require("express");
+const moment = require('moment'); // für Überprüfung von Datumsformat
 
 const app = express();
 
@@ -10,6 +11,21 @@ const datumZuGerichteMap = {
     "1900-01-01": [ "Spaghetti mit Tomatensoße", "Salamipizza", "Schokoladenpudding" ],
     "1900-01-31": [ "Risi Bisi", "Spinat mit Salzkartoffeln" ],
 };
+
+const DATUMSFORMAT = "YYYY-MM-DD";
+
+/**
+ * Überprüft, ob ein String ein gültiges Datum im Format YYYY-MM-DD ist.
+ * Verwendet dazu die Bibliothek "moment".
+ *
+ * @param {*} datumsString
+ * @returns {boolean} true, wenn Datumsformat gültig ist, sonst false
+ */
+function istDatumGueltig(datumsString) {
+
+    return moment(datumsString, DATUMSFORMAT, true).isValid(); // true=strict
+}
+
 
 // Damit Body von HTTP-POST-Request als JSON interpretiert wird
 app.use( express.json() );
@@ -24,9 +40,20 @@ app.use( express.static("public") );
  */
 app.get("/kantinenplan/abfrage/:datum", (req, res) => {
 
-    const datum    = req.params.datum;
-    const gerichte = datumZuGerichteMap[datum];
+    const datum = req.params.datum;
 
+    if ( !istDatumGueltig(datum) ) {
+
+        res.status(400)
+           .json({
+                "datum"    : datum,
+                "erfolg"   : false,
+                "nachricht": "Ungültiges Datum",
+                "gerichte" : []
+            });
+    }
+
+    const gerichte = datumZuGerichteMap[datum];
     if (gerichte) {
 
         res.status(200)
@@ -55,7 +82,18 @@ app.get("/kantinenplan/abfrage/:datum", (req, res) => {
  */
 app.post("/kantinenplan/einplanen/", (req, res) => {
 
-    const datum   = req.body.datum;
+    const datum = req.body.datum;
+
+    if ( !istDatumGueltig(datum) ) {
+
+        res.status(500)
+           .json({
+                "datum"    : datum,
+                "erfolg"   : false,
+                "nachricht": "Ungültiges Datum"
+           });
+    }
+
     const gericht = req.body.gericht;
 
     let nachricht = "";
