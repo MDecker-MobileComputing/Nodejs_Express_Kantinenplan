@@ -5,7 +5,7 @@ const app = express();
 const PORT_NUMMER = 8080;
 
 /* "Datenbank" für Gerichte */
-const datumZuGerichteArray = {
+const datumZuGerichteMap = {
 
     "1900-01-01": [ "Spaghetti mit Tomatensoße", "Salamipizza", "Schokoladenpudding" ],
     "1900-01-31": [ "Risi Bisi", "Spinat mit Salzkartoffeln" ],
@@ -19,7 +19,7 @@ const datumZuGerichteArray = {
 app.get("/kantinenplan/abfrage/:datum", (req, res) => {
 
     const datum    = req.params.datum;
-    const gerichte = datumZuGerichteArray[datum];
+    const gerichte = datumZuGerichteMap[datum];
 
     if (gerichte) {
 
@@ -41,6 +41,24 @@ app.get("/kantinenplan/abfrage/:datum", (req, res) => {
                 "gerichte" : []
             });
     }
+});
+
+// Damit Body von HTTP-POST-Request als JSON interpretiert wird
+app.use( express.json() );
+
+app.post("/kantinenplan/einplanen/", (req, res) => {
+
+    const datum = req.body.datum;
+    const gericht = req.body.gericht;
+
+    datumZuGerichteMap[datum] = [ gericht ];
+
+    res.status(201)
+       .json({
+            "datum"    : datum,
+            "erfolg"   : true,
+            "nachricht": "Gericht wurde eingeplant"
+        });
 });
 
 
