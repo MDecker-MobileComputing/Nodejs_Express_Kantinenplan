@@ -14,6 +14,18 @@ der Anwendung verloren.
 
 ----
 
+## Verwendung ##
+
+<br>
+
+Nach Klonen/Download des Repos: `npm install`
+
+Webserver mit REST-API starten: `npm start`
+
+<br>
+
+----
+
 ## REST-Endpunkte ##
 
 <br>
@@ -34,18 +46,55 @@ Datumswerte haben immer das Format `YYYY-MM-DD`, z.B. `2024-01-31`.
 
 <br>
 
-Antwort im JSON-Format:
+Antwort im JSON-Format für den Erfolgsfall:
 ```
 {
     "datum": "2024-01-31",
+    "erfolg": true,
+    "nachricht: "2 Gericht(e) gefunden",
     "gerichte": [ "Spaghetti mit Tomatensoße", "Salamipizza" ]
 }
 ```
+
+<br>
 
 Wenn für den Tag nur ein Gericht eingeplant ist, dann referenziert
 `gerichte` einen Array mit nur einem Element.
 Wenn für den Tag kein Gericht eingeplant ist, dann referenziert
 `gerichte` einen leeren Array.
+
+
+<br>
+
+Antwort im JSON-Format für den Fehlerfall (1):
+```
+{
+    "datum": "2024-01-31",
+    "erfolg": false,
+    "nachricht: "Keine Gerichte für diesen Tag gefunden",
+    "gerichte": []
+}
+```
+
+<br>
+
+Antwort im JSON-Format für den Fehlerfall (2):
+```
+{
+    "datum": "2024-02-31",
+    "erfolg": false,
+    "nachricht: "Ungültiger Datumswert übergeben",
+    "gerichte": []
+}
+```
+
+<br>
+
+Der Schlüssel `nachricht` referenziert also eine Fehlermeldung,
+wenn die Abfrage nicht erfolgreich war.
+
+<br>
+
 
 <br>
 
