@@ -1,0 +1,18 @@
+{
+  "name": "nodejs_express_kantinenplan",
+  "version": "1.0.0",
+  "description": "REST-API für Kantinenplan mit expressjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "MDecker-MobileComputing",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MDecker-MobileComputing/Nodejs_Express_Kantinenplan.git"
+  }
+}
