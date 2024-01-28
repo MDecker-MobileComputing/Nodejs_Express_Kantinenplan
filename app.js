@@ -15,15 +15,18 @@ const datumZuGerichteMap = {
 const DATUMSFORMAT = "YYYY-MM-DD";
 
 /**
- * Überprüft, ob ein String ein gültiges Datum im Format YYYY-MM-DD ist.
- * Verwendet dazu die Bibliothek "moment".
+ * Überprüft, ob ein String ein gültiges Datum im Format `YYYY-MM-DD` ist.
+ * Verwendet dazu die Bibliothek "moment". Funktion erkennt ungültiges
+ * Format (z.B. fehlender Zahl für Monat) oder unmögliches Datum
+ * (z.B. 32. Februar).
  *
- * @param {*} datumsString
- * @returns {boolean} true, wenn Datumsformat gültig ist, sonst false
+ * @param {*} Zu überprüfendes Datum
+ * @returns {boolean} `true`, wenn Datumsformat gültig ist, sonst `false`
  */
 function istDatumGueltig(datumsString) {
 
-    return moment(datumsString, DATUMSFORMAT, true).isValid(); // true=strict
+    const m = moment(datumsString, DATUMSFORMAT, true); // true=strict
+    return m.isValid();
 }
 
 
@@ -106,7 +109,7 @@ app.post("/kantinenplan/einplanen/", (req, res) => {
     } else {
 
         gerichte.push(gericht);
-        nachricht = "Weiteres Gericht für Tag eingeplant.";
+        nachricht = `Gericht als ${gerichte.length}. Gericht für Tag eingeplant`;
     }
 
     res.status(201)
