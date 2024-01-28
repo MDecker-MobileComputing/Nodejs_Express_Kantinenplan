@@ -1,11 +1,9 @@
 const express = require("express");
 const moment = require('moment'); // für Überprüfung von Datumsformat
 
-const app = express();
-
 const PORT_NUMMER = 8080;
 
-/* "Datenbank" für Gerichte */
+/* "Datenbank" für Gerichte an einzelnen Tagen */
 const datumZuGerichteMap = {
 
     "1900-01-01": [ "Spaghetti mit Tomatensoße", "Salamipizza", "Schokoladenpudding" ],
@@ -29,6 +27,8 @@ function istDatumGueltig(datumsString) {
     return m.isValid();
 }
 
+
+const app = express();
 
 // Damit Body von HTTP-POST-Request als JSON interpretiert wird
 app.use( express.json() );
