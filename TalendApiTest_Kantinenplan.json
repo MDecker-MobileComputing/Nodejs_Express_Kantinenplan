@@ -1,0 +1,191 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "id": "72e2a6d8-3270-47ba-8aa3-d7738fe5a6ad",
+        "name": "Kantinenplan"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost:8080",
+              "path": "/kantinenplan/abfrage/1900-01-01"
+            },
+            "id": "e7c87b0a-9b37-4c99-92ae-3a0db88529bc",
+            "name": "GET-1900-01-01-Testdaten",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost:8080",
+              "path": "/kantinenplan/abfrage/2099-01-01"
+            },
+            "id": "afcd9a50-714e-4688-9112-ddb255d0fa1d",
+            "name": "GET-2099-01-01",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+              "name": "GET"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost:8080",
+              "path": "/kantinenplan/abfrage/1900-01-32"
+            },
+            "id": "2e7aeff0-0a48-4ee3-9ff8-f377b850f516",
+            "name": "GET-Datum-Ungültig",
+            "headers": []
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text",
+              "textBodyEditorHeight": 150,
+              "textBody": "{\n    \"datum\": \"2099-01-01\",\n    \"gericht\": \"Pudding\"\n}"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost:8080",
+              "path": "/kantinenplan/einplanen/"
+            },
+            "id": "1fd11561-9435-4812-8d13-3f41326d3ba5",
+            "name": "POST-2099-01-01-Pudding",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        },
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "requestBody": true,
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+              "name": "POST"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text",
+              "textBody": "{\n    \"datum\": \"2099-01-01\",\n    \"gericht\": \"Schnitzel\"\n}"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost:8080",
+              "path": "/kantinenplan/einplanen/"
+            },
+            "id": "43462ac6-73cc-4660-bc82-9e08dcfb1ffe",
+            "name": "POST-2099-01-01-Schnitzel",
+            "headers": [
+              {
+                "enabled": true,
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
