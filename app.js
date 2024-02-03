@@ -54,6 +54,7 @@ app.get("/kantinenplan/abfrage/:datum", (req, res) => {
                 "nachricht": "Ungültiges Datum",
                 "gerichte" : []
             });
+        return;
     }
 
     const gerichte = datumZuGerichteMap[datum];
@@ -89,12 +90,13 @@ app.post("/kantinenplan/einplanen/", (req, res) => {
 
     if ( !istDatumGueltig(datum) ) {
 
-        res.status(500)
+        res.status(400)
            .json({
                 "datum"    : datum,
                 "erfolg"   : false,
                 "nachricht": "Ungültiges Datum"
            });
+        return;
     }
 
     const gericht = req.body.gericht;
