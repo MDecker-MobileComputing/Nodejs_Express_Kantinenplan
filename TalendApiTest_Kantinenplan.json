@@ -4,10 +4,42 @@
     {
       "entity": {
         "type": "Project",
-        "id": "72e2a6d8-3270-47ba-8aa3-d7738fe5a6ad",
+        "id": "a75ec1ff-7625-46f1-af17-4fe82154cc2c",
         "name": "Kantinenplan"
       },
       "children": [
+        {
+          "entity": {
+            "type": "Request",
+            "method": {
+              "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+              "name": "DELETE"
+            },
+            "body": {
+              "formBody": {
+                "overrideContentType": true,
+                "encoding": "application/x-www-form-urlencoded",
+                "items": []
+              },
+              "bodyType": "Text"
+            },
+            "uri": {
+              "query": {
+                "delimiter": "&",
+                "items": []
+              },
+              "scheme": {
+                "name": "http",
+                "version": "V11"
+              },
+              "host": "localhost:8080",
+              "path": "/kantinenplan/loeschen/2099-01-01"
+            },
+            "id": "52a1fa53-96f7-4d1c-9886-33b9e331f572",
+            "name": "DELETE-2099-01-01",
+            "headers": []
+          }
+        },
         {
           "entity": {
             "type": "Request",
@@ -35,7 +67,7 @@
               "host": "localhost:8080",
               "path": "/kantinenplan/abfrage/1900-01-01"
             },
-            "id": "e7c87b0a-9b37-4c99-92ae-3a0db88529bc",
+            "id": "df5cc561-79aa-4c74-8b30-fbe74b3e6e97",
             "name": "GET-1900-01-01-Testdaten",
             "headers": []
           }
@@ -67,7 +99,7 @@
               "host": "localhost:8080",
               "path": "/kantinenplan/abfrage/2099-01-01"
             },
-            "id": "afcd9a50-714e-4688-9112-ddb255d0fa1d",
+            "id": "720db22f-a0f5-47f3-8d14-13bdd95529ff",
             "name": "GET-2099-01-01",
             "headers": []
           }
@@ -99,7 +131,7 @@
               "host": "localhost:8080",
               "path": "/kantinenplan/abfrage/1900-01-32"
             },
-            "id": "2e7aeff0-0a48-4ee3-9ff8-f377b850f516",
+            "id": "45580d0b-d207-4181-b41f-4dd40812ea82",
             "name": "GET-Datum-Ungültig",
             "headers": []
           }
@@ -134,7 +166,7 @@
               "host": "localhost:8080",
               "path": "/kantinenplan/einplanen/"
             },
-            "id": "1fd11561-9435-4812-8d13-3f41326d3ba5",
+            "id": "f79d3ae8-77f7-4f7a-b25b-47ed7af73c30",
             "name": "POST-2099-01-01-Pudding",
             "headers": [
               {
@@ -174,7 +206,7 @@
               "host": "localhost:8080",
               "path": "/kantinenplan/einplanen/"
             },
-            "id": "43462ac6-73cc-4660-bc82-9e08dcfb1ffe",
+            "id": "eb6d1867-5d8b-4dd9-88ad-0eea34577b27",
             "name": "POST-2099-01-01-Schnitzel",
             "headers": [
               {
