@@ -4,7 +4,7 @@
   "description": "REST-API für Kantinenplan mit expressjs",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "author": "MDecker-MobileComputing",
   "license": "BSD-3-Clause",
