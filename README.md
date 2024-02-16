@@ -37,7 +37,7 @@ Datumswerte haben immer das Format `YYYY-MM-DD`, z.B. `2024-01-31`.
 ### Gerichte für ein Datum abfragen ###
 
 * Request-Typ: `HTTP-GET`
-* Endpunkt: `/kantinenplan/abfrage/{datum}`
+* Endpunkt: `/kantinenplan/v1/abfrage/{datum}`
 * Pfadvariable `{datum}` im Format `YYYY-MM-DD`, z.B. `2024-01-31`.
 * HTTP-Status-Codes:
   * Bei Erfolg: `200 OK`
@@ -101,7 +101,7 @@ wenn die Abfrage nicht erfolgreich war.
 ### Ein Gericht für bestimmtes Datum hinzufügen ###
 
 * Request-Typ: `HTTP-POST`
-* Endpunkt: `/kantinenplan/einplanen/`
+* Endpunkt: `/kantinenplan/v1/einplanen/`
 * HTTP-Status-Codes:
   * Bei Erfolg: `201 CREATED`
   * Ungültiger Request: `400 BAD REQUEST`
@@ -131,5 +131,3 @@ See the [LICENSE file](LICENSE.md) for license rights and limitations (BSD 3-Cla
 for the files in this repository.
 
 <br>
-
-

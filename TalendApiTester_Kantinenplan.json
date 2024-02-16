@@ -4,7 +4,7 @@
     {
       "entity": {
         "type": "Project",
-        "id": "a75ec1ff-7625-46f1-af17-4fe82154cc2c",
+        "id": "0ad5894d-d87a-4dfb-b324-4a2d1633e818",
         "name": "Kantinenplan"
       },
       "children": [
@@ -33,9 +33,9 @@
                 "version": "V11"
               },
               "host": "localhost:8080",
-              "path": "/kantinenplan/loeschen/2099-01-01"
+              "path": "/kantinenplan/v1/loeschen/2099-01-01"
             },
-            "id": "52a1fa53-96f7-4d1c-9886-33b9e331f572",
+            "id": "86aa609c-8561-41f5-b3da-c3b076c9efc2",
             "name": "DELETE-2099-01-01",
             "headers": []
           }
@@ -65,9 +65,9 @@
                 "version": "V11"
               },
               "host": "localhost:8080",
-              "path": "/kantinenplan/abfrage/1900-01-01"
+              "path": "/kantinenplan/v1/abfrage/1900-01-01"
             },
-            "id": "df5cc561-79aa-4c74-8b30-fbe74b3e6e97",
+            "id": "54dc90fa-d3dd-4ce0-9aea-828b97fce5ad",
             "name": "GET-1900-01-01-Testdaten",
             "headers": []
           }
@@ -97,9 +97,9 @@
                 "version": "V11"
               },
               "host": "localhost:8080",
-              "path": "/kantinenplan/abfrage/2099-01-01"
+              "path": "/kantinenplan/v1/abfrage/2099-01-01"
             },
-            "id": "720db22f-a0f5-47f3-8d14-13bdd95529ff",
+            "id": "0611b479-9c24-46c5-8d7e-259b8de41ef4",
             "name": "GET-2099-01-01",
             "headers": []
           }
@@ -129,9 +129,9 @@
                 "version": "V11"
               },
               "host": "localhost:8080",
-              "path": "/kantinenplan/abfrage/1900-01-32"
+              "path": "/kantinenplan/v1/abfrage/1900-01-32"
             },
-            "id": "45580d0b-d207-4181-b41f-4dd40812ea82",
+            "id": "13a965b5-30c0-411e-a5da-e603714479fa",
             "name": "GET-Datum-Ungültig",
             "headers": []
           }
@@ -164,9 +164,9 @@
                 "version": "V11"
               },
               "host": "localhost:8080",
-              "path": "/kantinenplan/einplanen/"
+              "path": "/kantinenplan/v1/einplanen/"
             },
-            "id": "f79d3ae8-77f7-4f7a-b25b-47ed7af73c30",
+            "id": "f0c7b6f2-7221-4a7a-a700-4f22d9fe060a",
             "name": "POST-2099-01-01-Pudding",
             "headers": [
               {
@@ -204,9 +204,9 @@
                 "version": "V11"
               },
               "host": "localhost:8080",
-              "path": "/kantinenplan/einplanen/"
+              "path": "/kantinenplan/v1/einplanen/"
             },
-            "id": "eb6d1867-5d8b-4dd9-88ad-0eea34577b27",
+            "id": "aef8f6d1-5518-4d40-9354-99165ae0722a",
             "name": "POST-2099-01-01-Schnitzel",
             "headers": [
               {

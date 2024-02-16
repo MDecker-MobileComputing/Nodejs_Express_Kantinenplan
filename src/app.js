@@ -41,7 +41,7 @@ app.use( express.static("public") );
  * Endpunkt für HTTP-GET-Request zur Abfrage der Gerichte für einen Tag.
  * Datum wird als Pfad-Parameter übergeben.
  */
-app.get("/kantinenplan/abfrage/:datum", (req, res) => {
+app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
 
     const datum = req.params.datum;
 
@@ -84,7 +84,7 @@ app.get("/kantinenplan/abfrage/:datum", (req, res) => {
 /*
  * Endpunkt für HTTP-POST-Request zum Einplanen eines Gerichts für einen Tag.
  */
-app.post("/kantinenplan/einplanen/", (req, res) => {
+app.post("/kantinenplan/v1/einplanen/", (req, res) => {
 
     const datum = req.body.datum;
 
