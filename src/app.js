@@ -52,7 +52,7 @@ app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
                 "datum"    : datum,
                 "erfolg"   : false,
                 "nachricht": "Ungültiges Datum",
-                "gerichte" : []
+                "gerichte" : [] // leerer Array
             });
         return;
     }
@@ -75,7 +75,7 @@ app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
                 "datum"    : datum,
                 "erfolg"   : false,
                 "nachricht": "Keine Gerichte für diesen Tag gefunden",
-                "gerichte" : []
+                "gerichte" : [] // leerer Array
             });
     }
 });
@@ -102,7 +102,7 @@ app.post("/kantinenplan/v1/einplanen/", (req, res) => {
     const gericht = req.body.gericht;
 
     let nachricht = "";
-    const gerichte = datumZuGerichteMap[datum];
+    const gerichte = datumZuGerichteMap[ datum ];
     if (!gerichte) {
 
         datumZuGerichteMap[datum] = [ gericht ];
