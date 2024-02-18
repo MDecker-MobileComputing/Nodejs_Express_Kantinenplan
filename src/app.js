@@ -1,5 +1,5 @@
 const express = require("express");
-const moment = require('moment'); // für Überprüfung von Datumsformat
+const moment  = require('moment'); // für Überprüfung von Datumsformat
 
 const PORT_NUMMER = 8080;
 
@@ -128,3 +128,6 @@ app.post("/kantinenplan/v1/einplanen/", (req, res) => {
 app.listen( PORT_NUMMER,
             () => { console.log(`Web-Server lauscht auf Port ${PORT_NUMMER}`); }
           );
+
+
+//module.exports = app;   // für Unit-Tests
