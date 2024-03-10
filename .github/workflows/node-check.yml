@@ -14,7 +14,10 @@ jobs:
         node-version: '20'
     - name: Alle JavaScript-Dateien mit >node --check< prüfen
       run: |
+        zaehler=0
         while IFS= read -r file
         do
           node --check "$file"
+          let zaehler+=1
         done < <(find . -name "*.js")
+        echo "Anzahl js-Dateien mit Nodejs geprüft: $zaehler"
