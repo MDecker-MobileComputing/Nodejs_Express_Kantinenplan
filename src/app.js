@@ -1,7 +1,8 @@
 const express = require("express");
-const moment  = require('moment'); // für Überprüfung von Datumsformat
+const moment  = require("moment"); // für Überprüfung von Datumsformat
 
 const PORT_NUMMER = 8080;
+
 
 /* "Datenbank" für Gerichte an einzelnen Tagen */
 const datumZuGerichteMap = {
@@ -10,7 +11,10 @@ const datumZuGerichteMap = {
     "1900-01-31": [ "Risi Bisi", "Spinat mit Salzkartoffeln" ],
 };
 
+
+/** Datumsformat für moment.js */
 const DATUMSFORMAT = "YYYY-MM-DD";
+
 
 /**
  * Überprüft, ob ein String ein gültiges Datum im Format `YYYY-MM-DD` ist.
@@ -19,11 +23,12 @@ const DATUMSFORMAT = "YYYY-MM-DD";
  * (z.B. 32. Februar).
  *
  * @param {*} Zu überprüfendes Datum
+ *
  * @returns {boolean} `true`, wenn Datumsformat gültig ist, sonst `false`
  */
-function istDatumGueltig(datumsString) {
+function istDatumGueltig( datumsString ) {
 
-    const m = moment(datumsString, DATUMSFORMAT, true); // true=strict
+    const m = moment( datumsString, DATUMSFORMAT, true ); // true=strict
     return m.isValid();
 }
 
@@ -34,20 +39,20 @@ const app = express();
 app.use( express.json() );
 
 // statische Dateien (z.B. index.html) aus Unterordner "public/" bereitstellen
-app.use( express.static("public") );
+app.use( express.static( "public" ) );
 
 
 /*
  * Endpunkt für HTTP-GET-Request zur Abfrage der Gerichte für einen Tag.
  * Datum wird als Pfad-Parameter übergeben.
  */
-app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
+app.get( "/kantinenplan/v1/abfrage/:datum", ( req, res ) => {
 
     const datum = req.params.datum;
 
     if ( !istDatumGueltig(datum) ) {
 
-        res.status(400)
+        res.status( 400 )
            .json({
                 "datum"    : datum,
                 "erfolg"   : false,
@@ -57,10 +62,10 @@ app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
         return;
     }
 
-    const gerichte = datumZuGerichteMap[datum];
+    const gerichte = datumZuGerichteMap[ datum ];
     if (gerichte) {
 
-        res.status(200)
+        res.status( 200 )
            .json({
                 "datum"    : datum,
                 "erfolg"   : true,
@@ -70,7 +75,7 @@ app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
 
     } else {
 
-        res.status(404)
+        res.status( 404 )
            .json({
                 "datum"    : datum,
                 "erfolg"   : false,
@@ -84,13 +89,13 @@ app.get("/kantinenplan/v1/abfrage/:datum", (req, res) => {
 /*
  * Endpunkt für HTTP-POST-Request zum Einplanen eines Gerichts für einen Tag.
  */
-app.post("/kantinenplan/v1/einplanen/", (req, res) => {
+app.post( "/kantinenplan/v1/einplanen/", ( req, res ) => {
 
     const datum = req.body.datum;
 
-    if ( !istDatumGueltig(datum) ) {
+    if ( !istDatumGueltig( datum ) ) {
 
-        res.status(400)
+        res.status( 400 )
            .json({
                 "datum"    : datum,
                 "erfolg"   : false,
@@ -103,31 +108,31 @@ app.post("/kantinenplan/v1/einplanen/", (req, res) => {
 
     let nachricht = "";
     const gerichte = datumZuGerichteMap[ datum ];
-    if (!gerichte) {
+    if ( !gerichte ) {
 
-        datumZuGerichteMap[datum] = [ gericht ];
+        datumZuGerichteMap[ datum ] = [ gericht ];
         nachricht = "Erstes Gericht für Tag eingeplant";
 
     } else {
 
-        gerichte.push(gericht);
+        gerichte.push( gericht );
         nachricht = `Gericht als ${gerichte.length}. Gericht für Tag eingeplant`;
     }
 
-    res.status(201)
+    res.status( 201 )
        .json({
             "datum"    : datum,
             "erfolg"   : true,
             "nachricht": nachricht
         });
+
+    console.log( `Gericht "${gericht}" für ${datum} eingeplant.` );
 });
 
 
 
 // Web-Server starten
 app.listen( PORT_NUMMER,
-            () => { console.log(`Web-Server lauscht auf Port ${PORT_NUMMER}`); }
+            () => { console.log(`Web-Server lauscht auf Port ${PORT_NUMMER}.\n`); }
           );
 
-
-//module.exports = app;   // für Unit-Tests
